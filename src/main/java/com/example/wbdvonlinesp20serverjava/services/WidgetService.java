@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class WidgetService {
 
-    List<Widget> widgets = new ArrayList<Widget>();
+    List<Widget> widgets = new ArrayList<>();
 
     {
         Widget w1 = new Widget();
@@ -35,7 +35,7 @@ public class WidgetService {
         return 1;
     }
 
-    public Widget createWidget(Widget newWidget) {
+    public Widget createWidget(String tid, Widget newWidget) {
         widgets.add(newWidget);
         return newWidget;
     }

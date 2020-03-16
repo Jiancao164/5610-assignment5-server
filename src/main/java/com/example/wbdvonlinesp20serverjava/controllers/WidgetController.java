@@ -16,28 +16,30 @@ public class WidgetController {
     @Autowired
     WidgetService service;
 
-    @PutMapping("/widgets/{wid}")
+    @PutMapping("/api/widgets/{wid}")
     public int updateWidget(@PathVariable("wid") String widgetId,
                             @RequestBody Widget widget) {
         return service.updateWidget(widgetId, widget);
     }
 
-    @DeleteMapping("/widgets/{wid}")
+    @DeleteMapping("/api/widgets/{wid}")
     public int deleteWidget(@PathVariable("wid") String widgetId) {
         return service.deleteWidget(widgetId);
     }
 
-    @PostMapping("/widgets")
-    public Widget createWidget(@RequestBody Widget newWidget) {
-        return service.createWidget(newWidget);
+
+
+    @PostMapping("/api/topics/{tid}/widgets")
+    public Widget createWidget(@PathVariable("tid") String topicId, @RequestBody Widget newWidget) {
+        return service.createWidget(topicId, newWidget);
     }
 
-    @GetMapping("/widgets")
+    @GetMapping("/api/widgets")
     public List<Widget> findAllWidgets() {
         return service.findAllWidgets();
     }
 
-    @GetMapping("/topics/{tid}/widgets")
+    @GetMapping("/api/topics/{tid}/widgets")
     public List<Widget> findWidgetsForTopic(@PathVariable("tid") String tid) {
         return service.findWidgetsForTopic(tid);
     }
